@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Ponto Color — Pintura que transforma | Residencial, fachadas e comercial em Ubatuba</title>
+  <meta name="description" content="Serviços profissionais de pintura em Ubatuba/SP. Residencial interna e externa, fachadas, comercial, verniz e textura. Trabalhamos com marcas premium ou somente mão de obra." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Ponto Color — Pintura que transforma" />
+  <meta property="og:description" content="Pintura residencial, comercial e fachadas em Ubatuba/SP. Orçamento sem compromisso 24/7." />
+  <meta property="og:image" content="./assets/wheel.png" />
+
+  <link rel="icon" type="image/png" href="./assets/wheel.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800&display=swap" />
+
+  <style>
+    :root {
+      /* Dark dramatic palette inspired by the logo */
+      --bg-deep:    #0E1721;
+      --bg-mid:     #1A2533;
+      --bg-soft:    #2A3845;
+      --bg-card:    #1F2C3A;
+      --text:       #F5F0E6;
+      --text-soft:  #B8C2CC;
+      --text-mute:  #8B95A1;
+
+      /* Rainbow accents from the logo wheel */
+      --red:        #E84855;
+      --orange:     #F4A261;
+      --yellow:     #FFB800;
+      --yellow-l:   #FFD54A;
+      --green:      #4CAF50;
+      --teal:       #1B9AAA;
+      --purple:     #7B3FBF;
+
+      --gold:       #FFB800;
+      --green-wa:   #25D366;
+      --green-wa-d: #128C7E;
+
+      --display: 'Archivo Black', 'Arial Black', sans-serif;
+      --body:    'Inter', system-ui, sans-serif;
+
+      --shadow-lg: 0 20px 50px -10px rgba(0, 0, 0, 0.6);
+      --shadow-md: 0 10px 30px -8px rgba(0, 0, 0, 0.5);
+      --shadow-sm: 0 4px 16px -4px rgba(0, 0, 0, 0.4);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--body);
+      color: var(--text);
+      background: var(--bg-deep);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .display    { font-family: var(--display); letter-spacing: -0.01em; }
+    .eyebrow    { font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 700; }
+
+    /* ====================== HERO ====================== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse 80% 50% at 80% 90%, rgba(255, 184, 0, 0.06) 0%, transparent 60%),
+        linear-gradient(180deg, #000000 0%, #050810 40%, var(--bg-deep) 100%);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Texture noise overlay */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+      opacity: 0.04;
+      pointer-events: none;
+    }
+
+    /* Floating color blobs in background */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.18;
+      pointer-events: none;
+      animation: float 14s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(40px, -30px) scale(1.1); }
+      66% { transform: translate(-30px, 40px) scale(0.9); }
+    }
+
+    .nav {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 6vw 14px;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .nav-brand img {
+      height: 100px;
+      width: auto;
+      max-width: 340px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 18px rgba(0,0,0,0.5));
+    }
+    .nav-brand .brand-text {
+      font-family: var(--display);
+      font-size: 22px;
+      line-height: 1;
+      letter-spacing: -0.01em;
+    }
+    .nav-brand .brand-text .ponto { color: var(--text); }
+    .nav-brand .brand-text .color { color: var(--yellow); }
+    .nav-brand .brand-tag {
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      color: var(--text-mute);
+      margin-top: 3px;
+      display: block;
+    }
+    .nav-cnpj {
+      font-size: 11px;
+      color: var(--text-mute);
+      letter-spacing: 0.05em;
+      text-align: right;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 5;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 60px 6vw;
+    }
+    .hero-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 18px;
+      background: rgba(255, 184, 0, 0.1);
+      border: 1px solid rgba(255, 184, 0, 0.3);
+      border-radius: 100px;
+      color: var(--yellow-l);
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 32px;
+    }
+    .hero-pill .dot {
+      width: 8px; height: 8px;
+      background: var(--yellow);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--yellow);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.2); }
+    }
+
+    .hero h1 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7.5vw, 96px);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      margin: 0 0 28px;
+      color: var(--text);
+    }
+    .hero h1 .gradient-text {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--yellow-l) 0%, var(--orange) 50%, var(--red) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      padding: 0 0.08em 0.1em;
+      margin: 0 -0.06em;
+    }
+
+    .hero p.sub {
+      font-size: clamp(16px, 1.8vw, 19px);
+      color: var(--text-soft);
+      max-width: 540px;
+      margin: 0 0 40px;
+      line-height: 1.65;
+    }
+    .hero p.sub strong { color: var(--yellow-l); font-weight: 600; }
+
+    .cta-group { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--green-wa);
+      color: white;
+      padding: 17px 30px;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 10px 28px -6px rgba(37, 211, 102, 0.55);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: var(--green-wa-d);
+      box-shadow: 0 14px 36px -6px rgba(37, 211, 102, 0.7);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+      padding: 17px 26px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.18);
+      transition: all 0.2s ease;
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: var(--yellow);
+      color: var(--yellow-l);
+    }
+
+    /* Big wheel image on the right */
+    .hero-wheel {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-wheel img {
+      width: 100%;
+      max-width: 560px;
+      height: auto;
+      filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.6));
+      animation: logoFloat 6s ease-in-out infinite;
+    }
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .hero-wheel::before {
+      content: '';
+      position: absolute;
+      inset: -40px;
+      background: radial-gradient(ellipse, rgba(255, 184, 0, 0.06) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-tagline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: -8px;
+      animation: logoFloat 6s ease-in-out infinite;
+    }
+    .hero-tagline .line {
+      height: 1.5px;
+      width: 50px;
+      background: var(--text-soft);
+      border-radius: 2px;
+    }
+    .hero-tagline .text {
+      font-family: var(--display);
+      font-size: clamp(13px, 1.4vw, 16px);
+      letter-spacing: 0.32em;
+      color: var(--text-soft);
+      white-space: nowrap;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 60px;
+      flex-wrap: wrap;
+    }
+    .stat .num {
+      font-family: var(--display);
+      font-size: clamp(30px, 3.8vw, 40px);
+      color: var(--yellow);
+      line-height: 1;
+    }
+    .stat .label {
+      font-size: 12px;
+      color: var(--text-mute);
+      margin-top: 6px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ====================== SECTIONS ====================== */
+    section { padding: 110px 6vw; position: relative; }
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+    .section-head .eyebrow { color: var(--yellow); margin-bottom: 14px; display: block; }
+    .section-head h2 {
+      font-family: var(--display);
+      font-size: clamp(34px, 5vw, 56px);
+      margin: 0 0 18px;
+      letter-spacing: -0.025em;
+      color: var(--text);
+      line-height: 1.18;
+    }
+    .section-head h2 em {
+      display: inline-block;
+      font-style: italic;
+      background: linear-gradient(135deg, var(--yellow-l) 0%, var(--orange) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      padding: 0 0.08em 0.08em;
+      margin: 0 -0.06em;
+    }
+    .section-head p {
+      color: var(--text-soft);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 17px;
+    }
+
+    /* ====================== SERVIÇOS ====================== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 22px;
+      padding: 34px 30px;
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--accent-color, var(--yellow));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.45s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent-color, var(--yellow));
+      box-shadow: var(--shadow-md);
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon {
+      width: 58px; height: 58px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1.5px solid var(--accent-color, var(--yellow));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      color: var(--accent-color, var(--yellow));
+    }
+    .service-card h3 {
+      font-family: var(--display);
+      font-size: 22px;
+      margin: 0 0 12px;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+    .service-card p {
+      color: var(--text-soft);
+      font-size: 15px;
+      margin: 0 0 22px;
+      line-height: 1.65;
+    }
+    .service-card a.cta-service {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-color, var(--yellow));
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      transition: gap 0.2s ease;
+    }
+    .service-card a.cta-service:hover { gap: 12px; }
+
+    /* ====================== MODELO DE COBRANÇA ====================== */
+    .pricing-section {
+      background: linear-gradient(180deg, var(--bg-mid) 0%, var(--bg-deep) 100%);
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    .pricing-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 38px 36px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .pricing-card.premium {
+      border-color: rgba(255, 184, 0, 0.4);
+      background: linear-gradient(135deg, rgba(255, 184, 0, 0.05), var(--bg-card));
+    }
+    .pricing-card.premium::after {
+      content: '⭐ PREMIUM';
+      position: absolute;
+      top: 24px; right: 24px;
+      background: var(--yellow);
+      color: var(--bg-deep);
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+    }
+    .pricing-card h3 {
+      font-family: var(--display);
+      font-size: 28px;
+      margin: 0 0 14px;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text);
+    }
+    .pricing-card p.desc {
+      color: var(--text-soft);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .brand-logos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .brand-tag {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.02em;
+    }
+    .pricing-card .check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+    .pricing-card .check svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--accent, var(--yellow));
+    }
+
+    /* ====================== GALERIA ====================== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+    .gallery-item {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      background: var(--bg-card);
+      min-height: 240px;
+      box-shadow: var(--shadow-sm);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(14, 23, 33, 0.92) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-item:hover::after { opacity: 1; }
+    .gallery-item .caption {
+      position: absolute;
+      bottom: 18px; left: 22px; right: 22px;
+      color: var(--text);
+      font-family: var(--display);
+      font-size: 16px;
+      letter-spacing: -0.01em;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+    .gallery-item:hover .caption { opacity: 1; transform: translateY(0); }
+    .gallery-item.large { grid-column: span 8; min-height: 400px; }
+    .gallery-item.med   { grid-column: span 4; min-height: 400px; }
+    .gallery-item.small { grid-column: span 4; min-height: 250px; }
+
+    /* ====================== TESTIMONIALS ====================== */
+    .testimonials-section { background: var(--bg-deep); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
+    .testimonial-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 22px;
+      padding: 30px 28px;
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: -14px; left: 24px;
+      font-family: var(--display);
+      font-size: 92px;
+      color: var(--yellow);
+      line-height: 1;
+    }
+    .stars { color: var(--gold); font-size: 18px; margin-bottom: 14px; letter-spacing: 2px; }
+    .testimonial-text {
+      font-size: 15px;
+      color: var(--text-soft);
+      line-height: 1.7;
+      margin: 0 0 22px;
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex; align-items: center; gap: 14px;
+      padding-top: 18px;
+      border-top: 1px dashed rgba(255,255,255,0.08);
+    }
+    .avatar {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      color: var(--bg-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-family: var(--display);
+      font-size: 16px;
+    }
+    .avatar.c1 { background: linear-gradient(135deg, var(--red), var(--orange)); }
+    .avatar.c2 { background: linear-gradient(135deg, var(--yellow), var(--orange)); color: var(--bg-deep); }
+    .avatar.c3 { background: linear-gradient(135deg, var(--green), var(--teal)); }
+    .avatar.c4 { background: linear-gradient(135deg, var(--teal), var(--purple)); }
+    .author-info .name { font-weight: 700; color: var(--text); font-size: 15px; }
+    .author-info .meta { font-size: 12px; color: var(--text-mute); }
+
+    /* ====================== DIFERENCIAIS ====================== */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+    }
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
+      padding: 30px 26px;
+      transition: all 0.3s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent, var(--yellow));
+    }
+    .feature-card .f-icon {
+      width: 54px; height: 54px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1.5px solid var(--accent, var(--yellow));
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--accent, var(--yellow));
+    }
+    .feature-card h4 {
+      font-family: var(--display);
+      font-size: 20px;
+      margin: 0 0 10px;
+      color: var(--text);
+    }
+    .feature-card p {
+      font-size: 14px;
+      color: var(--text-soft);
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    /* ====================== FINAL CTA ====================== */
+    .final-cta {
+      background:
+        radial-gradient(circle at 30% 50%, rgba(123, 63, 191, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 70% 50%, rgba(255, 184, 0, 0.2) 0%, transparent 50%),
+        linear-gradient(135deg, var(--bg-deep), var(--bg-mid));
+      text-align: center;
+      padding: 110px 6vw;
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta .palette {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .final-cta .palette span {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      box-shadow: 0 0 16px currentColor;
+    }
+    .final-cta h2 {
+      font-family: var(--display);
+      font-size: clamp(36px, 5.5vw, 60px);
+      margin: 0 auto 18px;
+      letter-spacing: -0.025em;
+      line-height: 1.18;
+      max-width: 900px;
+      padding: 0 16px;
+    }
+    .final-cta h2 em {
+      display: inline-block;
+      font-style: italic;
+      background: linear-gradient(135deg, var(--yellow-l), var(--orange));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      padding: 0 0.08em 0.08em;
+      margin: 0 -0.06em;
+    }
+    .final-cta p {
+      font-size: 18px;
+      color: var(--text-soft);
+      max-width: 580px;
+      margin: 0 auto 40px;
+    }
+
+    /* ====================== FOOTER ====================== */
+    footer {
+      background: #050B12;
+      color: var(--text-mute);
+      padding: 70px 6vw 35px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 50px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-brand { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+    .footer-brand img { height: 60px; }
+    .footer-brand .ft {
+      font-family: var(--display);
+      font-size: 24px;
+      line-height: 1;
+    }
+    .footer-brand .ft .ponto { color: var(--text); }
+    .footer-brand .ft .color { color: var(--yellow); }
+    .footer-brand .tag { font-size: 10px; letter-spacing: 0.3em; color: var(--text-mute); margin-top: 4px; display: block; }
+    footer h5 {
+      font-family: var(--display);
+      color: var(--text);
+      font-size: 16px;
+      margin: 0 0 16px;
+    }
+    footer p, footer a {
+      color: var(--text-mute);
+      font-size: 14px;
+      text-decoration: none;
+      line-height: 1.85;
+    }
+    footer a:hover { color: var(--yellow); }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 26px;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ====================== FLOATING WA ====================== */
+    .wa-float {
+      position: fixed;
+      bottom: 26px; right: 26px;
+      background: var(--green-wa);
+      color: white;
+      width: 62px; height: 62px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 28px -4px rgba(37, 211, 102, 0.5);
+      z-index: 100;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      animation: bob 3s ease-in-out infinite;
+    }
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .wa-float:hover { background: var(--green-wa-d); transform: scale(1.1); }
+    .wa-float::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid var(--green-wa);
+      opacity: 0.5;
+      animation: ripple 2s ease-out infinite;
+    }
+    @keyframes ripple {
+      0% { transform: scale(1); opacity: 0.6; }
+      100% { transform: scale(1.45); opacity: 0; }
+    }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(20px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+
+    /* ====================== RESPONSIVE ====================== */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; text-align: left; }
+      .hero-wheel { order: -1; }
+      .hero-wheel img { max-width: 380px; }
+      .hero-tagline .line { width: 30px; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 70px 6vw; }
+      .section-head { margin-bottom: 48px; }
+      .nav { padding: 16px 6vw 6px; flex-wrap: wrap; gap: 12px; }
+      .nav-brand img { height: 70px; max-width: 240px; }
+      .nav-brand .brand-text { font-size: 18px; }
+      .nav-cnpj { display: none; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-item.large, .gallery-item.med, .gallery-item.small {
+        grid-column: span 2; min-height: 240px;
+      }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+      .hero-stats { gap: 24px; margin-top: 44px; }
+      .stat .num { font-size: 28px; }
+      .pricing-card.premium::after { font-size: 10px; padding: 3px 10px; top: 18px; right: 18px; }
+      .wa-float { width: 56px; height: 56px; bottom: 18px; right: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================== HERO ================== -->
+  <header class="hero">
+    <nav class="nav">
+      <div class="nav-spacer"></div>
+      <div class="nav-cnpj">CNPJ 60.570.726/0001-39<br/>Ubatuba/SP</div>
+    </nav>
+
+    <div class="hero-content">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-pill">
+            <span class="dot"></span>
+            Orçamento sem compromisso 24/7
+          </div>
+          <h1>
+            Sua casa<br/>
+            <span class="gradient-text">renovada</span><br/>
+            do jeito que<br/>
+            você sonhou
+          </h1>
+          <p class="sub">
+            Pintura residencial, comercial e fachadas em Ubatuba/SP.
+            Trabalhamos com <strong>marcas premium</strong> ou só mão de obra —
+            você escolhe. Acabamento impecável, equipe pontual, preço justo.
+          </p>
+          <div class="cta-group">
+            <a class="btn-primary" id="cta-hero" href="#" target="_blank" rel="noopener">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Pedir orçamento grátis
+            </a>
+            <a class="btn-secondary" href="#servicos">
+              Ver serviços
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat"><div class="num">24/7</div><div class="label">Atendimento</div></div>
+            <div class="stat"><div class="num">Grátis</div><div class="label">Orçamento</div></div>
+            <div class="stat"><div class="num">100%</div><div class="label">Sem compromisso</div></div>
+          </div>
+        </div>
+
+        <div class="hero-wheel">
+          <img src="./assets/logo-full.png?v=3" alt="Ponto Color — Pintura que transforma" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ================== SERVIÇOS ================== -->
+  <section id="servicos">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Nossos serviços</span>
+        <h2>Pintura completa, <em>do começo ao fim</em></h2>
+        <p>Atendemos todos os tipos de pintura — interna, externa, comercial e decorativa. Cada serviço com o cuidado e qualidade que sua casa merece.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card reveal" style="--accent-color: var(--red);">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M3 7l9-4 9 4M5 21V11M19 21V11M9 9v12M15 9v12"/></svg>
+          </div>
+          <h3>Residencial interna</h3>
+          <p>Salas, quartos, cozinhas, banheiros. Trabalho cuidadoso, com proteção dos móveis e limpeza ao final.</p>
+          <a class="cta-service" data-msg="Pintura residencial interna" href="#">Solicitar orçamento →</a>
+        </div>
+
+        <div class="service-card reveal" style="--accent-color: var(--orange);">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Residencial externa / Fachada</h3>
+          <p>Renove a fachada da sua casa. Tintas resistentes ao tempo e ao sol forte do litoral.</p>
+          <a class="cta-service" data-msg="Pintura externa / fachada" href="#">Solicitar orçamento →</a>
+        </div>
+
+        <div class="service-card reveal" style="--accent-color: var(--yellow);">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+          </div>
+          <h3>Comercial</h3>
+          <p>Lojas, escritórios, pousadas, restaurantes. Trabalho rápido pra não atrapalhar seu negócio.</p>
+          <a class="cta-service" data-msg="Pintura comercial" href="#">Solicitar orçamento →</a>
+        </div>
+
+        <div class="service-card reveal" style="--accent-color: var(--green);">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 22h20L12 2z"/><path d="M12 8v6M12 18h.01"/></svg>
+          </div>
+          <h3>Gesso e texturas</h3>
+          <p>Forros de gesso, sanca, acabamentos texturizados, grafiato. Detalhes que fazem a diferença.</p>
+          <a class="cta-service" data-msg="Gesso e texturas" href="#">Solicitar orçamento →</a>
+        </div>
+
+        <div class="service-card reveal" style="--accent-color: var(--teal);">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><path d="M19.07 4.93l-14.14 14.14M4.93 4.93l14.14 14.14"/></svg>
+          </div>
+          <h3>Verniz e esmalte</h3>
+          <p>Acabamento profissional em madeira e ferro. Portões, esquadrias, móveis — tudo com brilho duradouro.</p>
+          <a class="cta-service" data-msg="Verniz e esmalte (madeira/ferro)" href="#">Solicitar orçamento →</a>
+        </div>
+
+        <div class="service-card reveal" style="--accent-color: var(--purple);">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4l6 6-11 11H3v-6z"/><path d="M13 5l3 3"/></svg>
+          </div>
+          <h3>Preparo e reparo</h3>
+          <p>Lixamento, massa corrida e acrílica, pequenos consertos. Base perfeita pra uma pintura impecável.</p>
+          <a class="cta-service" data-msg="Preparo e reparo de superfície" href="#">Solicitar orçamento →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================== MODELO DE COBRANÇA ================== -->
+  <section class="pricing-section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Duas formas de trabalho</span>
+        <h2>Você <em>escolhe como</em></h2>
+        <p>Oferecemos flexibilidade pra atender qualquer orçamento, sem abrir mão da qualidade.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card premium reveal">
+          <h3>🎨 Pacote completo</h3>
+          <p class="desc">
+            Trabalhamos com marcas reconhecidas pelo mercado, garantindo cobertura uniforme,
+            durabilidade e acabamento de primeira. <strong style="color:var(--yellow-l);">Tinta e mão de obra inclusas</strong> no orçamento.
+          </p>
+          <div class="brand-logos">
+            <span class="brand-tag">Suvinil</span>
+            <span class="brand-tag">Coral</span>
+            <span class="brand-tag">Sherwin-Williams</span>
+            <span class="brand-tag">Eucatex</span>
+          </div>
+          <div style="margin-top: 24px;">
+            <div class="check" style="--accent: var(--yellow);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              <span>Tintas premium com garantia de fábrica</span>
+            </div>
+            <div class="check" style="--accent: var(--yellow);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              <span>Quantidade calculada com precisão (sem desperdício)</span>
+            </div>
+            <div class="check" style="--accent: var(--yellow);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              <span>Acabamento profissional e durável</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing-card reveal">
+          <h3>💰 Apenas mão de obra</h3>
+          <p class="desc">
+            Se preferir economizar ou já tem preferência por uma marca específica,
+            <strong style="color:var(--text);">você compra a tinta</strong> e nós cobramos só o serviço.
+            Te orientamos na quantidade certa e no produto ideal pro seu ambiente.
+          </p>
+          <div style="margin-top: 20px;">
+            <div class="check" style="--accent: var(--green);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              <span>Economia para quem quer gerenciar o material</span>
+            </div>
+            <div class="check" style="--accent: var(--green);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              <span>Liberdade total na escolha de marca e cor</span>
+            </div>
+            <div class="check" style="--accent: var(--green);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              <span>Orientação técnica gratuita sobre quantidade e tipo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p style="text-align: center; color: var(--text-mute); font-size: 14px; margin-top: 24px;">
+        * Em ambos os modelos, o valor da mão de obra é <strong style="color:var(--yellow-l);">sob orçamento</strong> — vamos até você sem custo pra avaliar e te passar tudo direitinho.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ================== GALERIA ================== -->
+  <section>
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Inspirações</span>
+        <h2>A magia que <em>transforma</em></h2>
+        <p>Da escolha da cor ao acabamento final — cada detalhe pensado pra deixar seu espaço único.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item large reveal">
+          <img src="./assets/gallery-1-sala.jpg" alt="Sala renovada com pintura turquesa" loading="lazy" />
+          <div class="caption">Sala renovada — antes e depois</div>
+        </div>
+        <div class="gallery-item med reveal">
+          <img src="./assets/gallery-2-pincel.jpg" alt="Pincel e lata de tinta" loading="lazy" style="object-position: 75% center;" />
+          <div class="caption">Pintura profissional</div>
+        </div>
+        <div class="gallery-item small reveal">
+          <img src="./assets/gallery-3-cartela.jpg" alt="Cartela de cores em leque" loading="lazy" />
+          <div class="caption">Cartela de cores</div>
+        </div>
+        <div class="gallery-item small reveal">
+          <img src="./assets/gallery-5-tinta.jpg" alt="Tintas premium Sherwin-Williams" loading="lazy" />
+          <div class="caption">Tintas premium</div>
+        </div>
+        <div class="gallery-item small reveal">
+          <img src="./assets/gallery-4-fachada.jpg" alt="Fachada colorida moderna" loading="lazy" />
+          <div class="caption">Fachadas externas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================== DIFERENCIAIS ================== -->
+  <section class="pricing-section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Por que escolher a Ponto Color</span>
+        <h2>Trabalho feito <em>com cuidado</em></h2>
+        <p>Atenção aos detalhes, respeito ao seu espaço e compromisso com o prazo combinado.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card reveal" style="--accent: var(--yellow);">
+          <div class="f-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h4>Atendimento 24/7</h4>
+          <p>Estamos sempre disponíveis pra atender você — orçamento por WhatsApp em qualquer horário.</p>
+        </div>
+
+        <div class="feature-card reveal" style="--accent: var(--orange);">
+          <div class="f-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          </div>
+          <h4>Proteção total</h4>
+          <p>Cobrimos móveis, pisos e janelas. Sua casa fica protegida do começo ao fim do serviço.</p>
+        </div>
+
+        <div class="feature-card reveal" style="--accent: var(--green);">
+          <div class="f-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c2.83 0 5.36 1.31 7 3.36"/></svg>
+          </div>
+          <h4>Compromisso com prazo</h4>
+          <p>Estimativa realista e cumprimento do prazo combinado. Sem enrolação, sem surpresas.</p>
+        </div>
+
+        <div class="feature-card reveal" style="--accent: var(--teal);">
+          <div class="f-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h4>Atende Ubatuba e região</h4>
+          <p>Centro, Praia Grande, Itaguá, Maranduba, Ubatumirim — atendemos toda a cidade e arredores.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================== TESTIMONIALS ================== -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">O que dizem nossos clientes</span>
+        <h2>Histórias de <em>transformação</em></h2>
+        <p>Cada parede pintada é uma casa que ganhou nova vida. Veja o que nossos clientes têm a dizer.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Pintaram toda a sala e os quartos da minha casa em 3 dias. Ficou impecável, sem respingos, sem cheiro forte. Equipe pontual e organizada. Já recomendei pra família toda."</p>
+          <div class="testimonial-author">
+            <div class="avatar c1">CM</div>
+            <div class="author-info">
+              <div class="name">Carolina Mendes</div>
+              <div class="meta">Praia Grande · Residencial interna</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Precisava da fachada da pousada renovada antes da alta temporada. Eles entenderam a urgência, usaram tinta de qualidade que aguenta o sol forte e entregaram antes do prazo. Profissionais sérios."</p>
+          <div class="testimonial-author">
+            <div class="avatar c2">RT</div>
+            <div class="author-info">
+              <div class="name">Roberto Toledo</div>
+              <div class="meta">Itaguá · Fachada comercial</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Optei pela modalidade mão de obra apenas. Eles me orientaram exatamente sobre a quantidade de tinta que eu precisava comprar e qual marca usar. Economizei bastante e o resultado ficou show!"</p>
+          <div class="testimonial-author">
+            <div class="avatar c3">PS</div>
+            <div class="author-info">
+              <div class="name">Patrícia Santana</div>
+              <div class="meta">Centro · Apenas mão de obra</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Verniz no portão de madeira e esmalte nos gradis de ferro. Trabalho minucioso, lixaram tudo direitinho antes. Parecem novos! Já chamei pra fazer o teto de gesso da varanda também."</p>
+          <div class="testimonial-author">
+            <div class="avatar c4">LB</div>
+            <div class="author-info">
+              <div class="name">Luís Bertoldo</div>
+              <div class="meta">Maranduba · Verniz e esmalte</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================== FINAL CTA ================== -->
+  <section class="final-cta">
+    <div class="palette">
+      <span style="background: var(--red); color: var(--red);"></span>
+      <span style="background: var(--orange); color: var(--orange);"></span>
+      <span style="background: var(--yellow); color: var(--yellow);"></span>
+      <span style="background: var(--green); color: var(--green);"></span>
+      <span style="background: var(--teal); color: var(--teal);"></span>
+      <span style="background: var(--purple); color: var(--purple);"></span>
+    </div>
+    <h2>Pronto pra <em>transformar</em><br/>seu espaço?</h2>
+    <p>Manda mensagem agora. Te respondemos rapidinho, sem compromisso, sem letras miúdas.</p>
+    <a class="btn-primary" id="cta-final" href="#" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Falar no WhatsApp agora
+    </a>
+  </section>
+
+
+  <!-- ================== FOOTER ================== -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <img src="./assets/logo-full.png" alt="Ponto Color" style="height: 90px; max-width: 260px; margin-bottom: 20px; display: block;" />
+        <p style="max-width: 360px;">
+          Especialistas em pintura residencial, comercial, fachadas e acabamentos
+          em Ubatuba e região. Trabalho com compromisso, qualidade e respeito ao seu espaço.
+        </p>
+      </div>
+      <div>
+        <h5>Contato</h5>
+        <p>📱 <a id="cta-footer" href="#" target="_blank">(12) 98870-3175</a></p>
+        <p>📍 Ubatuba/SP e região</p>
+        <p>⏰ Atendimento 24/7</p>
+      </div>
+      <div>
+        <h5>Dados</h5>
+        <p>CNPJ 60.570.726/0001-39</p>
+        <p>Ponto Color</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Ponto Color. Todos os direitos reservados.
+    </div>
+  </footer>
+
+
+  <a class="wa-float" id="cta-float" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+
+  <script>
+    // ============ CONFIG ============
+    const WHATSAPP_PHONE = '5512988703175';
+    const MSG_GERAL = 'Olá! Quero um orçamento de pintura.';
+    const MSG_INFO  = 'Olá! Quero mais informações sobre os serviços da Ponto Color.';
+
+    function waLink(text) {
+      return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`;
+    }
+
+    document.getElementById('cta-hero').href   = waLink(MSG_GERAL);
+    document.getElementById('cta-final').href  = waLink(MSG_GERAL);
+    document.getElementById('cta-footer').href = waLink(MSG_INFO);
+    document.getElementById('cta-float').href  = waLink(MSG_GERAL);
+
+    document.querySelectorAll('.cta-service').forEach(el => {
+      const servico = el.dataset.msg;
+      el.href = waLink(`Olá! Quero um orçamento para o serviço de ${servico}.`);
+      el.target = '_blank';
+      el.rel = 'noopener';
+    });
+
+    // Scroll reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('show');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>
